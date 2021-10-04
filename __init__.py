@@ -2,16 +2,12 @@ import check50
 import check50.c
 
 @check50.check()
-def exists():
-    """hello.c exists"""
-    check50.exists("hello.c")
-
-@check50.check(exists)
 def compiles():
     """hello.c compiles"""
-    check50.c.compile("hello.c", lcs50=True)
+    check50.c.compile("hello.c")
 
 @check50.check(compiles)
-def emma():
-    """responds to name Emma"""
-    check50.run("./hello").stdout("Emma").exit(0)
+def prints_hello():
+    """prints "hello, world\\n" """
+    check50.run("./hello").stdout("[Hh]ello, world!?\n", regex=True).exit(0)
+
